@@ -11,15 +11,12 @@ import java.util.List;
 
 @Service
 public class StationServiceImp implements StationService {
-
     @Autowired
     StationRepository StationRepo;
-
     @Override
     public List<Station> getAll() {
         return StationRepo.findAll();
     }
-
     @Override
     public void save(Station station) {
         StationRepo.save(station);

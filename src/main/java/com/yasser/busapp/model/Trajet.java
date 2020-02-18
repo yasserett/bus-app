@@ -12,7 +12,7 @@ public class Trajet {
     private int id;
     @ManyToOne(cascade = CascadeType.ALL)
     private Ligne ligne;
-    @OneToMany(mappedBy = "trajet")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "trajet")
     private List<Position> position;
 
 }
