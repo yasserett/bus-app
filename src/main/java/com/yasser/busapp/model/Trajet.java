@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity @Data @NoArgsConstructor
 public class Trajet {
@@ -11,5 +12,7 @@ public class Trajet {
     private int id;
     @ManyToOne(cascade = CascadeType.ALL)
     private Ligne ligne;
+    @OneToMany(mappedBy = "trajet")
+    private List<Position> position;
 
 }

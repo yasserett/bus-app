@@ -1,9 +1,11 @@
 package com.yasser.busapp.controller;
 import com.yasser.busapp.model.Ligne;
+import com.yasser.busapp.model.Position;
 import com.yasser.busapp.model.Station;
 import com.yasser.busapp.model.Trajet;
 import com.yasser.busapp.service.imp.LigneserviceImp;
 import com.yasser.busapp.service.imp.StationServiceImp;
+import org.apache.tomcat.jni.Local;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
@@ -13,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +83,52 @@ public class RestTestController {
 
     @GetMapping(value = "/addHistory",produces = MediaType.APPLICATION_JSON_VALUE)
     public String addHistory(){
-
+        //creation de la liste de position pour UN trajet
+        List<Position> positionList = new ArrayList<>();
+        //creation de la position 1
+        Position position1 = new Position();
+        position1.setTime(LocalTime.of(12,0,0));
+        positionList.add(position1);
+        //creation de la position 2
+        Position position2 = new Position();
+        position2.setTime(LocalTime.of(12,2,0));
+        positionList.add(position2);
+        //creation de la position 3
+        Position position3 = new Position();
+        position3.setTime(LocalTime.of(12,4,0));
+        positionList.add(position3);
+        //creation de la position 4
+        Position position4 = new Position();
+        position4.setTime(LocalTime.of(12,6,0));
+        positionList.add(position4);
+        //creation de la position 5
+        Position position5 = new Position();
+        position5.setTime(LocalTime.of(12,8,0));
+        positionList.add(position5);
+        //creation de la position 6
+        Position position6 = new Position();
+        position6.setTime(LocalTime.of(12,10,0));
+        positionList.add(position6);
+        //creation de la position 7
+        Position position7 = new Position();
+        position7.setTime(LocalTime.of(12,12,0));
+        positionList.add(position7);
+        //creation de la position 8
+        Position position8 = new Position();
+        position8.setTime(LocalTime.of(12,14,0));
+        positionList.add(position8);
+        //creation de la position 9
+        Position position9 = new Position();
+        position9.setTime(LocalTime.of(12,16,0));
+        positionList.add(position9);
+        //creation de la position 10
+        Position position10 = new Position();
+        position9.setTime(LocalTime.of(12,18,0));
+        positionList.add(position10);
+        //creation du trajet
+        Trajet trajet = new Trajet();
+        trajet.setLigne(LigneService.getAll().get(0));
+        trajet.setPosition(positionList);
         return "OK";
     }
 
