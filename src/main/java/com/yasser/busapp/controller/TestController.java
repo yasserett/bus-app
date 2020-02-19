@@ -1,11 +1,14 @@
 package com.yasser.busapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.yasser.busapp.model.Ligne;
+import com.yasser.busapp.model.Position;
 import com.yasser.busapp.model.Station;
 import com.yasser.busapp.model.Trajet;
 import com.yasser.busapp.service.imp.LigneserviceImp;
+import com.yasser.busapp.service.imp.PositionServiceImp;
 import com.yasser.busapp.service.imp.StationServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -15,13 +18,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.Point;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TestController {
 
     @Autowired
     StationServiceImp StationService;
-
+    @Autowired
+    PositionServiceImp PositionService;
     @Autowired
     LigneserviceImp LigneService;
 
@@ -47,6 +52,21 @@ public class TestController {
         Point point = geometryFactory.createPoint(new Coordinate(34.010792, -6.849247));
         m.addAttribute("point", point);
         return "/test";
+    }
+
+    @GetMapping(value="/")
+    public String index(Model m){
+        m.addAttribute("list",LigneService.getAll());
+        return "/index";
+    }
+
+    @GetMapping(value="/mapligne")
+    public String mapligne(@RequestParam int ligneid,Model m){
+        Ligne ligne = LigneService.getById(ligneid);
+        m.addAttribute("ligne",ligne);
+        List<Station> list = StationService.getByLigne(ligne);
+        m.addAttribute("list",list);
+        return "/mapligne";
     }
 
     @GetMapping(value = "/test",produces = MediaType.APPLICATION_JSON_VALUE)

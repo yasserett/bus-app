@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LigneserviceImp implements LigneService {
@@ -22,5 +23,10 @@ public class LigneserviceImp implements LigneService {
     @Override
     public List<Ligne> getAll() {
         return LigneRepo.findAll();
+    }
+
+    @Override
+    public Ligne getById(int id) {
+        return LigneRepo.findById(id);
     }
 }

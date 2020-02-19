@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+        <nav class="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+            <h1><a href="/"><span><img src="../img/bus.png"/></span>Accueil</a></h1>
+        </nav>
+    </nav>
+    <!--/.Navbar-->
+    <div class="container">
+        <div class="row" style="margin-top:50px;">
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
+            <div class="col-md-5" style="margin-top:200px">
+                <form method="get" th:action="@{/mapstation}">
+                    <input type="hidden" id="custId" name="ligneid" th:value="${{param.ligneid}}">
+                    <div class="row">
+                        <div class="col-md-12">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class="form-control" name="stationid">
+                                <option th:each="ligne : ${list}" th:value="${ligne.getId()}" th:text="${ligne.getName()}"></option>
+                            </select>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-secondary btn-lg btn-block" type="submit">Continuer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let latlngligne = /*[[${ligne.getLngLat()}]]*/ null;
+        console.log(latlngligne);
+
+        /*]]>*/
+    </script>
+    <script>
+        let map = L.map('map').setView([34.016317,-6.835519], 15);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWFzc2VyZXR0IiwiYSI6ImNrNXkzaXd3NDAxZnMzZG9mYmc2bjJjd28ifQ.RnUZbOGi82VUwC9wdF_c8Q', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 20,
+            id: 'mapbox/streets-v11',
+            accessToken: 'pk.eyJ1IjoieWFzc2VyZXR0IiwiYSI6ImNrNXkzaXd3NDAxZnMzZG9mYmc2bjJjd28ifQ.RnUZbOGi82VUwC9wdF_c8Q'
+        }).addTo(map);
+        // create a red polyline from an array of LatLng points
+        let polyline = L.polyline(latlngligne, {color: 'black'}).addTo(map);
+        //creating markers
+        let marker = L.marker([33.99051970698684,-6.85671329498291]).addTo(map);
+        marker.bindPopup("Station Souissi").openPopup();
+        let marker1 = L.marker([33.99592361261128,-6.851853132247925]).addTo(map);
+        marker1.bindPopup("Station Ibn Sina");
+        let marker2 = L.marker([34.000266502452384,-6.843827962875366]).addTo(map);
+        marker2.bindPopup("Station Nations Unies");
+        let marker3 = L.marker([34.00745524275185,-6.8413496017456055]).addTo(map);
+        marker3.bindPopup("Station Bibliothèque Nationale");
+        let marker4 = L.marker([34.012844731169515,-6.838324069976807]).addTo(map);
+        marker4.bindPopup("Station Bab Rouah");
+        // zoom the map to the polyline
+        map.fitBounds(polyline.getBounds());
+    </script>
+</body>
+</html>

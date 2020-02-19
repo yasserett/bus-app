@@ -37,31 +37,31 @@ public class RestTestController {
         Point location = geometryFactory.createPoint(new Coordinate(33.99051970698684,-6.85671329498291));
         Station station = new Station();
         station.setLocation(location);
-        station.setName("Station de départ");
+        station.setName("Station Souissi");
         stationList.add(station); // Ajout de la station dans la liste de la ligne
         // creation de la deuxieme station
         Point location2 = geometryFactory.createPoint(new Coordinate(	33.99592361261128,-6.851853132247925));
         Station station2 = new Station();
         station2.setLocation(location2);
-        station2.setName("Station deux");
+        station2.setName("Station Ibn Sina");
         stationList.add(station2); // Ajout de la station dans la liste de la ligne
         // creation de la troisième station
         Point location3 = geometryFactory.createPoint(new Coordinate(	34.000266502452384,-6.843827962875366));
         Station station3 = new Station();
         station3.setLocation(location3);
-        station3.setName("Station trois");
+        station3.setName("Station Nations Unies");
         stationList.add(station3); // Ajout de la station dans la liste de la ligne
         // creation de la quatrième station
         Point location4 = geometryFactory.createPoint(new Coordinate(	34.00745524275185,-6.8413496017456055));
         Station station4 = new Station();
         station4.setLocation(location4);
-        station4.setName("Station quatre");
+        station4.setName("Station Bibliothèque Nationale");
         stationList.add(station4); // Ajout de la station dans la liste de la ligne
         // creation de la station de fin
         Point location5 = geometryFactory.createPoint(new Coordinate(	34.012844731169515,-6.838324069976807));
         Station station5 = new Station();
         station5.setLocation(location5);
-        station5.setName("Station de fin");
+        station5.setName("Station Bab Rouah");
         stationList.add(station5); // Ajout de la station dans la liste de la ligne
         // creation of a ligne
         Coordinate[] cooList = new Coordinate[] { new Coordinate(33.99051970698684,-6.85671329498291),
@@ -155,7 +155,7 @@ public class RestTestController {
     public String addHistory2(){
         //geometry factory to create geometry types
         GeometryFactory geometryFactory = new GeometryFactory();
-        //creation du trajet 1
+        //creation du trajet 2
         Trajet trajet = new Trajet();
         //creation de la liste de position pour UN trajet
         List<Position> positionList = new ArrayList<>();
@@ -231,7 +231,7 @@ public class RestTestController {
     public String addHistory3(){
         //geometry factory to create geometry types
         GeometryFactory geometryFactory = new GeometryFactory();
-        //creation du trajet 1
+        //creation du trajet 3
         Trajet trajet = new Trajet();
         //creation de la liste de position pour UN trajet
         List<Position> positionList = new ArrayList<>();

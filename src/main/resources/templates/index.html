@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+        <h1><a href="/"><span><img src="../img/bus.png"/></span>Accueil</a></h1>
+    </nav>
+    <!--/.Navbar-->
+    <div class="container">
+        <div class="row" style="margin-top:200px;">
+            <div class="col-md-7">
+                <h1 class="text-left">Prédiction des arrivées de Bus</h1>
+                <p class="text-left">Bienvenue dans notre application de prédiction d'arrivée de Bus.<br>
+                Vous pouvez commencer par spécifier la ligne.
+                </p>
+            </div>
+            <div class="col-md-5">
+                <form method="get" th:action="@{/mapligne}">
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-control" name="ligneid">
+                            <option th:each="ligne : ${list}" th:value="${ligne.getId()}" th:text="${ligne.getName()}"></option>
+                        </select>
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-secondary btn-lg btn-block" type="submit">Continuer</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

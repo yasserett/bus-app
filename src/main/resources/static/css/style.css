@@ -1,0 +1,39 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    min-height: 100%;
+    background-size:cover;
+    background: linear-gradient(
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5)
+    ), url("../img/background-img.jpg") fixed;
+    font-family: 'Playfair Display', serif;
+    color:#282828;
+}
+h1{
+    font-size : 30px;
+}
+p{
+    font-size:17px;
+}
+a{
+    text-decoration: none;
+    size: 25px;
+    color:#282828;
+}
+a:hover{
+    text-decoration:none;
+    color:#505050;
+}
+span img{
+    height:50px;
+    width: 50px;
+}
+#map{
+    height:500px;
+    border: 2px white solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius:2px;
+}

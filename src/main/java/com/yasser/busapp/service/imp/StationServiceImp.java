@@ -1,6 +1,8 @@
 package com.yasser.busapp.service.imp;
 
 import com.yasser.busapp.dao.StationRepository;
+import com.yasser.busapp.model.Ligne;
+import com.yasser.busapp.model.Position;
 import com.yasser.busapp.model.Station;
 import com.yasser.busapp.service.StationService;
 import org.locationtech.jts.geom.Point;
@@ -20,5 +22,9 @@ public class StationServiceImp implements StationService {
     @Override
     public void save(Station station) {
         StationRepo.save(station);
+    }
+    @Override
+    public List<Station> getByLigne(Ligne ligne) {
+        return StationRepo.getAllByLignes(ligne);
     }
 }
