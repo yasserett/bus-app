@@ -69,6 +69,17 @@ public class TestController {
         return "/mapligne";
     }
 
+    @GetMapping(value="/mapstation")
+    public String mapstation(@RequestParam int ligneid,@RequestParam int stationid, Model m){
+        Ligne ligne = LigneService.getById(ligneid);
+        m.addAttribute("ligne",ligne);
+        List<Station> list = StationService.getByLigne(ligne);
+        m.addAttribute("list",list);
+        Station station = StationService.GetById(stationid);
+        m.addAttribute("station",station);
+        return "/mapstation";
+    }
+
     @GetMapping(value = "/test",produces = MediaType.APPLICATION_JSON_VALUE)
     public String addStation(){
         GeometryFactory geometryFactory = new GeometryFactory();

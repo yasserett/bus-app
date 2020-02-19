@@ -11,4 +11,5 @@ public interface StationService {
     List<Station> getAll();
     void save(Station station);
     List<Station> getByLigne(Ligne ligne);
+    Station GetById(int stationid);
 }

@@ -27,4 +27,8 @@ public class StationServiceImp implements StationService {
     public List<Station> getByLigne(Ligne ligne) {
         return StationRepo.getAllByLignes(ligne);
     }
+    @Override
+    public Station GetById(int stationid) {
+        return StationRepo.findById(stationid);
+    }
 }
