@@ -6,7 +6,6 @@ import com.yasser.busapp.model.Trajet;
 import com.yasser.busapp.service.imp.LigneserviceImp;
 import com.yasser.busapp.service.imp.StationServiceImp;
 import com.yasser.busapp.service.imp.TrajetServiceImp;
-import org.apache.tomcat.jni.Local;
 import org.locationtech.jts.geom.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class RestTestController {
+public class SecondaryController {
 
     @Autowired
     StationServiceImp StationService;
