@@ -14,5 +14,4 @@ public class Trajet {
     private Ligne ligne;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "trajet")
     private List<Position> position;
-
 }

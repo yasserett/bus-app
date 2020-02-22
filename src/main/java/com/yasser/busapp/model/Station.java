@@ -2,7 +2,6 @@ package com.yasser.busapp.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
 import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;

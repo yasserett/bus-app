@@ -1,6 +1,7 @@
 package com.yasser.busapp.service.imp;
 
 import com.yasser.busapp.dao.TrajetRepository;
+import com.yasser.busapp.model.Ligne;
 import com.yasser.busapp.model.Trajet;
 import com.yasser.busapp.service.TrajetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,6 @@ public class TrajetServiceImp implements TrajetService {
     public void save(Trajet trajet){
         TrajetRepo.save(trajet);
     }
-
-
+    @Override
+    public List<Trajet> getByLigne(Ligne ligne){ return TrajetRepo.findByLigne(ligne);}
 }

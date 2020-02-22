@@ -313,15 +313,4 @@ public class SecondaryController {
         TrajetService.save(trajet);
         return "OK";
     }
-
-    @GetMapping(value = "/containsTest",produces = MediaType.APPLICATION_JSON_VALUE)
-    public String containsTest(){
-        LineString route = LigneService.getAll().get(0).getRoute();
-        Point point = StationService.getAll().get(0).getLocation();
-        GeometryFactory geometryFactory = new GeometryFactory();
-        Point point2 = geometryFactory.createPoint(new Coordinate(35.99051970698684,-6.85671329498291));
-        double distance = point.distance(point2);
-        if(point2.isWithinDistance(point,10))   return "OK"+distance;
-        else    return "NOT OK"+distance;
-    }
 }

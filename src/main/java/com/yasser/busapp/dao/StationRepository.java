@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface StationRepository extends JpaRepository<Station,Integer> {
-    public List<Station> getAllByLignes(Ligne ligne);
+    List<Station> getAllByLignes(Ligne ligne);
     Station findById(int stationid);
 }

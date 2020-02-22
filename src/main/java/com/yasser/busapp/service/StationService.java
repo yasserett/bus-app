@@ -5,6 +5,7 @@ import com.yasser.busapp.model.Position;
 import com.yasser.busapp.model.Station;
 import org.locationtech.jts.geom.Point;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface StationService {
@@ -12,4 +13,5 @@ public interface StationService {
     void save(Station station);
     List<Station> getByLigne(Ligne ligne);
     Station GetById(int stationid);
+    Position closestPoint(Point point, ArrayList<Position> list);
 }
